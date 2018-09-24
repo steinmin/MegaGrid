@@ -1,0 +1,20 @@
+<div class="MegaGrid">
+  <!--Main Column Header, can't be scrolled-->
+  <app-column-header *ngIf="_mainColumnHeader !== null"
+                     [Index]="-1"
+                     [ColumnHeader]="_mainColumnHeader"
+                     [Layout]="_mainColumnHeader.getLayout()"></app-column-header>
+
+  <div *ngFor="let row of _rows; let i = index">
+    <!--scroll bar-->
+    <!--Virtual Canvas to hold the place at background-->
+    <app-column-header *ngIf="row.type === rowType.ColumnHeader"
+                       [Index]="i"
+                       [ColumnHeader]="row"
+                       [Layout]="row.getLayout()"></app-column-header>
+    <app-table-row *ngIf="row.type === rowType.TableRow"
+                   [Index]="_rows.length > 0 && _rows[0].type === rowType.ColumnHeader ? i + 1 : i"
+                   [Row]="row"
+                   [Layout]="row.getLayout()"></app-table-row>
+  </div>
+</div>

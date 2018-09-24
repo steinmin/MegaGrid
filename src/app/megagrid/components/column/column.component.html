@@ -1,0 +1,10 @@
+<div class="MegaGridColumn ellipseText"
+     [style.width]="Column.Width"
+     [style.border-left]="Layout.ShowColumnSeparator && ColumnIndex > 0 ? Layout.SeparatorBorder : ''">
+  <input class="HorizontalCenterAlignment VerticalCenterAlignment" *ngIf="Column.ColumnType === columnType.Checkbox" type="checkbox" name="checkAll">
+  <span class="CellContentMargin VerticalCenterAlignment">{{Column.Title}}</span>
+  <!--[style.cursor]="sortType? 'pointer' : 'default'" <i class="" *ngIf="sortType>0"></i>
+   <i class="" *ngIf="sortType<0"></i>
+   Layout.ShowColumnSeparator &&ColumnIndex > 0 ? Layout.SeperatorBorder : ''
+   -->
+</div>

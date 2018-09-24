@@ -1,0 +1,15 @@
+<div class="MegaGridRow"
+     [ngClass]="{'MegaGridRowEvenBackground': Index % 2 == 0, 'MegaGridRowOddBackground': Index % 2 == 1}"
+     (click)="Row.getGrid().Selection.AddSelection(Row)">
+  <div id="mouseoverRowBackground" class="FullSize">
+    <div [ngClass]="{'selectedRowBackground': Row.Selected}" class="FullSize">
+      <app-cell class="HorizontalStackPanel"
+                *ngFor="let col of Layout.Columns; let j = index"
+                [Row]="Row"
+                [Layout]="Layout"
+                [ColumnIndex]="j"
+                [Column]="col"
+                [Data]="Row.Data[col.FieldName]"></app-cell>
+    </div>
+  </div>
+</div>

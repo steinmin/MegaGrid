@@ -1,0 +1,88 @@
+@RowHeight: 32px; // all row element should with same RowHeight.
+@SeperatorWidth: 1px;
+
+.FullSize {
+  height: 100%;
+  width: 100%;
+}
+.ellipseText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.HorizontalStackPanel {
+  display: inline-block;
+  float: left;
+}
+
+.CellContentMargin {
+  margin: 5px;
+}
+
+.HorizontalCenterAlignment {
+  margin: auto;
+  width: 100%;
+}
+
+.VerticalCenterAlignment {
+  line-height: 0;
+  //vertical-align: middle;
+}
+
+#mouseoverRowBackground:hover {
+  background-color: skyblue;
+}
+
+.selectedRowBackground {
+  background-color: rgba(30, 144, 255, 0.8);
+}
+
+.MegaGrid {
+  border: solid black 3px;
+  background: white;
+  min-height: 320px;
+}
+
+.MegaGridCell {
+  height: @RowHeight; // should same as MegaGrid.RowHeight
+  line-height: @RowHeight; // should same as MegaGrid.RowHeight
+}
+
+.MegaGridRow {
+  overflow: hidden; //unchangeable
+  height: @RowHeight; // should same as MegaGrid.RowHeight
+  border: Solid black;
+  border-width: 0px 0px @SeperatorWidth 0px; // only render the bottom
+}
+
+.MegaGridRowOddBackground {
+  background: aliceblue;
+}
+
+.MegaGridRowEvenBackground {
+  background: white;
+}
+
+.MegaGridColumnHeader {
+  overflow: hidden; //unchangeable
+  height: @RowHeight; // should same as MegaGrid.RowHeight
+  border: solid black;
+  border-width: 0px 0px @SeperatorWidth 0px; // only render the bottom
+  background: linear-gradient(lightgray, darkgray, lightgray);
+}
+
+.MegaGridColumn {
+  height: @RowHeight;
+  line-height: @RowHeight;
+  background: transparent;
+}
+
+.MegaGridInfoRow {
+
+}
+
+.MegaGridGroupSeperator {
+  border: dotted @SeperatorWidth darkgray;
+}
+

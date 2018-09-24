@@ -1,0 +1,7 @@
+<div class="MegaGridColumnHeader">
+  <app-column class="HorizontalStackPanel"
+              *ngFor="let col of Layout.Columns; let j = index;"
+              [Layout]="Layout"
+              [ColumnIndex]="j"
+              [Column]="col"></app-column>
+</div>
