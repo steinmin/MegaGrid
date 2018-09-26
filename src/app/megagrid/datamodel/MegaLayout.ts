@@ -36,7 +36,7 @@ export class  MegaLayout {
   public set Columns(columns: MegaColumn[]) {
     this._columns = U.notNullOrUndefined(columns) ? columns : [];
     from<MegaColumn>(this._columns).subscribe(col => col.ParentLayout = this);
-    this.ColumnOrder = _.range(this._columns.length);
+    this.ColumnOrder = this._columns.map(col => col.Id);
   }
 
   private _columnOrder: number[] = null;

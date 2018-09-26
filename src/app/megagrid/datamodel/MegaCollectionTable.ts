@@ -32,8 +32,7 @@ export class MegaCollectionTable extends MegaCollection {
         throw new Error('lazy loading is not implemented.');
       } else if (U.notEmpty(this.ItemsSource)) {
         for (let i = 0; i < this.ItemsSource.length; i++) {
-          const row = new MegaRow(i, this.ItemsSource[i]);
-          row.setParent(this);
+          const row = new MegaRow(i, this, this.ItemsSource[i]);
           rows.push(row);
         }
       }

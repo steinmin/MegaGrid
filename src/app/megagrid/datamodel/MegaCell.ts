@@ -1,4 +1,3 @@
-import {Input} from '@angular/core';
 import {MegaLayout} from './MegaLayout';
 import {IGridElement} from './IGridElement';
 import {MegaCollection} from './MegaCollection';
@@ -6,23 +5,44 @@ import {MegaGrid} from './MegaGrid';
 import {MegaRowBase} from './MegaRowBase';
 import {U} from '../utilities/U';
 import {MegaColumn} from './MegaColumn';
+import {MegaRow} from './MegaRow';
+import {ColumnType} from './Enums';
 
 export class MegaCell implements IGridElement {
-  @Input() Layout: MegaLayout = null;
-  @Input() ColumnIndex: number;
-  @Input() Column: MegaColumn = null;
-  @Input() Row: any = null;
-  @Input() Data: any = null;
-
-  public IsSelected = false;
-  public IsFocused = false;
-  public Background = 'transparent';
-  public Icon: any; // Sets or returns the icon of the cell, if OtColumnDefinition.CellsCanHaveIcons
-  public Value: any;
-  public Tooltip = '';
-  public Tag: any;
-
   private _parent: IGridElement;
+
+  Column: MegaColumn = null;
+  Data: any = null;
+  Icon: any = null; // Sets or returns the icon of the cell, if OtColumnDefinition.CellsCanHaveIcons
+  Tooltip = '';
+  IsSelected = false;
+  IsFocused = false;
+  Background = '';
+  Tag: any;
+
+  constructor(row: MegaRow, column: MegaColumn) {
+    this.setParent(row);
+    this.Column = column;
+    if (column.ColumnType !== ColumnType.Normal) {
+      return;
+    }
+
+    this.Data = row.Data[column.FieldName];
+    if (U.notNullOrUndefined(column.FieldIconUrl)) {
+      this.Icon = row.Data[column.FieldIconUrl];
+    }
+  }
+
+  get Row(): MegaRow {
+    return this.getParent() as MegaRow;
+  }
+
+  showCellSeperator(): boolean {
+    if (!this.Column.ParentLayout.ShowColumnSeparator) {
+      return false;
+    }
+    return this.Column.Id !== this.Column.ParentLayout.ColumnOrder[0];
+  }
 
   getDataCollection(): MegaCollection {
     return this.getParent().getDataCollection();
@@ -65,22 +85,6 @@ export class MegaCell implements IGridElement {
   }
 
   public toString(): any {
-    if (U.notNullOrUndefined(this.Value == null)) {
-      return '';
-    } else if (this.getParent() == null) {
-      return this.Value; // error
-    } else {
-      const layout = this.getLayout();
-      if (U.notNullOrUndefined(layout)) {
-        return this.Value; // error
-      }
-
-      // int index = ParentRow.Cells.IndexOf(this);
-      // if (index < 0 || index >= layout.ColumnDefinitions.Count) {
-      //   return this.Value;
-      // } else {
-      //   return GetCellText(layout.ColumnDefinitions[index]);
-      // }
-    }
+    return this.Data;
   }
 }

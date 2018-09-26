@@ -4,12 +4,8 @@
   <div id="mouseoverRowBackground" class="FullSize">
     <div [ngClass]="{'selectedRowBackground': Row.Selected}" class="FullSize">
       <app-cell class="HorizontalStackPanel"
-                *ngFor="let col of Layout.Columns; let j = index"
-                [Row]="Row"
-                [Layout]="Layout"
-                [ColumnIndex]="j"
-                [Column]="col"
-                [Data]="Row.Data[col.FieldName]"></app-cell>
+                *ngFor="let col of Layout.Columns"
+                [Cell]="Row.getCell(col.Id)"></app-cell>
     </div>
   </div>
 </div>

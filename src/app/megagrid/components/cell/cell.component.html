@@ -1,17 +1,28 @@
 <div class="MegaGridCell ellipseText flex-item-major"
-     [style.width]="Column.Width"
-     [style.border-left]="Layout.ShowColumnSeparator && ColumnIndex > 0 ? Layout.SeparatorBorder : ''">
-  <div [style.background]="Column.ColumnType===1 ?'lightgray' : 'transparent'"
-       style="height: 100%;margin: 0;">
-    <span class="CellContentMargin VerticalCenterAlignment" *ngIf="Column.ColumnType === columnType.Mark">*</span>
+     [style.width]="Cell.Column.Width"
+     [ngClass]="{'MegaGridCellSeperator': Cell.showCellSeperator()}">
+    <!--RowHeader-->
+  <div class="MegaGridRowHeader"
+       *ngIf="Cell.Column.ColumnType === columnType.Mark">
+    <p class="centerText" *ngIf="Cell.Row.Selected">*</p>
+  </div>
 
-    <label class="expander CellContentMargin VerticalCenterAlignment" *ngIf="Column.ColumnType === columnType.Expander" name="expander">
+    <!--RowExpander-->
+    <label class="expander CellContentMargin VerticalCenterAlignment"
+           *ngIf="Cell.Column.ColumnType === columnType.Expander"
+           name="expander">
       <input type="checkbox" style="display:none">
       <span class="triangle"></span>
     </label>
 
-    <input class="HorizontalCenterAlignment VerticalCenterAlignment" *ngIf="Column.ColumnType === columnType.Checkbox" type="checkbox" name="checkRow">
+    <!--Row Checkbox-->
+    <input class="HorizontalCenterAlignment VerticalCenterAlignment"
+           *ngIf="Cell.Column.ColumnType === columnType.Checkbox"
+           type="checkbox"
+           name="checkRow">
 
-    <span class="CellContentMargin VerticalCenterAlignment" *ngIf="Column.ColumnType === columnType.Normal" (click)="onClick()">{{Data}}</span>
-  </div>
+    <!--Row Content-->
+    <span class="CellContentMargin VerticalCenterAlignment"
+          *ngIf="Cell.Column.ColumnType === columnType.Normal"
+          (click)="onClick()">{{Cell.toString()}}</span>
 </div>

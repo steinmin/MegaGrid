@@ -21,7 +21,7 @@ export class MegaColumn implements MegaColumn {
   public DefaultValue: any;
 
   // public Filter: IFilter;
-  public ColumnHeaderIcon: string;
+  public ColumnHeaderIcon: string = null;
   public HasCurrencySymbol = false;
   public HasEditButton = false;
   public HasClearButton = false;
@@ -30,8 +30,8 @@ export class MegaColumn implements MegaColumn {
   public IsInfoRow = false;
 
   public InfoRowLines = 2;
-  public FieldName: string;
-  public IconFieldName: string;
+  public FieldName: string = null;
+  public FieldIconUrl: string = null;
   public TextAlignment: number;
   public TextDecorations: string;
   public Width: string;

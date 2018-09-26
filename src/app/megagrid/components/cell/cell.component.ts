@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {MegaLayout} from '../../datamodel/MegaLayout';
 import {MegaColumn} from '../../datamodel/MegaColumn';
 import {ColumnType} from '../../datamodel/Enums';
+import {MegaCell} from '../../datamodel/MegaCell';
 
 @Component({
   selector: 'app-cell',
@@ -9,11 +10,7 @@ import {ColumnType} from '../../datamodel/Enums';
   styleUrls: ['../../megagrid.component.less', '../../../css/expander.less']
 })
 export class CellComponent implements OnInit {
-  @Input() Layout: MegaLayout = null;
-  @Input() ColumnIndex: number;
-  @Input() Column: MegaColumn = null;
-  @Input() Row: any = null;
-  @Input() Data: any = null;
+  @Input() Cell: MegaCell = null;
 
   columnType = ColumnType;
 

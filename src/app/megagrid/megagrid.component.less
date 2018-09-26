@@ -11,6 +11,12 @@
   white-space: nowrap;
 }
 
+.centerText{
+  text-align: center;
+  margin: auto;
+  width: 50%
+}
+
 .HorizontalStackPanel {
   display: inline-block;
   float: left;
@@ -62,6 +68,17 @@
 
 .MegaGridRowEvenBackground {
   background: white;
+}
+
+.MegaGridRowHeader {
+  height: 100%;
+  width: 100%;
+  background: #E3E3E3;
+}
+
+.MegaGridCellSeperator {
+  border: Solid black;
+  border-width: 0px 0px 0px @SeperatorWidth; //only render the left.
 }
 
 .MegaGridColumnHeader {
